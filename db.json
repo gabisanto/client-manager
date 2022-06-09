@@ -1,0 +1,28 @@
+{
+  "clients": [
+    {
+      "clientName": "Gabi",
+      "company": "Gabi Code",
+      "email": "jknkjn@gmail.com",
+      "phone": "12345645",
+      "notes": "Learning REACT!",
+      "id": 1
+    },
+    {
+      "clientName": "Gabi",
+      "company": "Gabi Code",
+      "email": "jknkjn@gmail.com",
+      "phone": "12345645",
+      "notes": "Learning REACT!",
+      "id": 2
+    },
+    {
+      "clientName": "Macacha",
+      "company": "Uber",
+      "email": "macacha@uber.com",
+      "phone": "135465454",
+      "notes": "",
+      "id": 3
+    }
+  ]
+}

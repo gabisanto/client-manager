@@ -1,9 +1,12 @@
 import React from 'react'
 import Alert from './Alert'
 import {Formik, Form, Field, ErrorMessage} from 'formik'
+import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
 
 const FormClient = () => {
+    //a hook to redirect the user
+    const navigate = useNavigate()
 
     const newClientSchema = Yup.object().shape({
                 clientName: Yup.string()
@@ -17,8 +20,22 @@ const FormClient = () => {
                 phone: Yup.number().integer('Invalid number').positive('Invalid number').typeError('Invalid number'),
                   
     })
-    const handleSubmit = (values) => {
+    const handleSubmit = async (values) => {
+        try {
+            const url= 'http://localhost:4000/clients'
+            const response = await fetch(url,{
+                method: 'POST', //new register
+                body: JSON.stringify(values),
+                headers: {'Content-Type': 'application/json'} //json-server rules on documentation, this is required
+            })
+            console.log(response)
+            const result = await response.json()
+            console.log(result)
 
+            navigate('/clients')
+        } catch (error) {
+            console.log(error)
+        }
     }
 
   return (
@@ -33,8 +50,10 @@ const FormClient = () => {
                 phone:'',
                 notes:''
             }}
-            onSubmit={(values) => {
-                handleSubmit(values)
+            onSubmit={async (values,{resetForm}) => {
+                await handleSubmit(values)
+                //added async await to make sure all data goes to the server BEFORE i reset
+                resetForm()
             }}
             validationSchema={newClientSchema}
         
@@ -110,7 +129,7 @@ const FormClient = () => {
                         name='notes'
                     />
                 </div>
-                <input type="submit" value="Add client" className="mt-5 w-full p-3 text-white uppercase font-bold text-lg bg-blue-800"/>
+                <input type="submit" value="Add client" className="mt-5 cursor-pointer w-full p-3 text-white uppercase font-bold text-lg bg-blue-800 hover:bg-blue-400"/>
             </Form>
             )}}
         </Formik>
