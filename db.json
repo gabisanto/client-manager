@@ -9,14 +9,6 @@
       "id": 1
     },
     {
-      "clientName": "Gabi",
-      "company": "Gabi Code",
-      "email": "jknkjn@gmail.com",
-      "phone": "12345645",
-      "notes": "Learning REACT!",
-      "id": 2
-    },
-    {
       "clientName": "Macacha",
       "company": "Uber",
       "email": "macacha@uber.com",
@@ -31,6 +23,14 @@
       "phone": "",
       "notes": "",
       "id": 4
+    },
+    {
+      "clientName": "Yanina Updated",
+      "company": "Garbarino",
+      "email": "hahaha@gmail.com",
+      "phone": "",
+      "notes": "",
+      "id": 5
     }
   ]
 }

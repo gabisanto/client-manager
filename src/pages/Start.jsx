@@ -18,6 +18,27 @@ const Start = () => {
     getClientsAPI()
   }, [])
 
+  const handleDelete = async id => {
+    const confirmation = confirm('Are you sure you want to delete?')
+    if(confirmation) {
+      try {
+        const url = `http://localhost:4000/clients/${id}`
+        const response = await fetch (url,{
+          method: 'DELETE',
+          })
+          await response.json()
+          //now i have to update the state
+          const clientsArray= clients.filter(client => client.id !== id)
+          setClients(clientsArray)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+  }
+
+  //handleDelete here because i have setClients and I need the deleted client to disappear from dom as well as the server
+
   return (
     <>
       <h1 className='font-black text-4xl text-blue-900'>Clients</h1>
@@ -40,6 +61,7 @@ const Start = () => {
                 <ClientList
                   key={client.id}
                   client={client}
+                  handleDelete={handleDelete}
                 />
             ))
           }
