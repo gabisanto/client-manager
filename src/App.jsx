@@ -1,9 +1,12 @@
+//json-server --watch db.json --port 4000
+
 import { useState } from 'react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Layout from './layout/Layout'
 import Start from './pages/Start'
 import NewClient from './pages/NewClient'
 import EditClient from './pages/EditClient'
+import ViewClient from './pages/ViewClient'
 
 function App() {
   
@@ -15,6 +18,7 @@ function App() {
           <Route index element={<Start/>}/>
           <Route path="new" element={<NewClient/>}/>
           <Route path="edit/:id" element={<EditClient/>}/>
+          <Route path=":id" element={<ViewClient/>}/>
         </Route>
 
       </Routes>

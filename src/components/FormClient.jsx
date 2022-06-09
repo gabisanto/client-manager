@@ -24,7 +24,7 @@ const FormClient = () => {
         try {
             const url= 'http://localhost:4000/clients'
             const response = await fetch(url,{
-                method: 'POST', //new register
+                method: 'POST', //new register is under POST, fetch is by default GET so we have to set method
                 body: JSON.stringify(values),
                 headers: {'Content-Type': 'application/json'} //json-server rules on documentation, this is required
             })
